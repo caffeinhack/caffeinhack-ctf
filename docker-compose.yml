@@ -1,0 +1,16 @@
+version: '2'
+services:
+  db:
+    image: mysql
+    environment:
+        MYSQL_DATABASE: ctf_db
+        MYSQL_ROOT_PASSWORD: password
+
+  web:
+    build: ./web
+    ports:
+      - '80:80'
+    volumes:
+      - ./web/:/var/www/html
+    depends_on:
+      - db
